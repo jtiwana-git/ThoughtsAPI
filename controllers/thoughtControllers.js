@@ -50,11 +50,38 @@ const thoughtControllers = {
         .then((thought) => res.json(thought))
         .catch((err) => res.status(500).json(err));
     },
-    
+
+   // ADD REACTION
+      getAddReaction({ params, body }, res) {
+    Thought.findOneAndUpdate(
+        { _id: params.thoughtId },
+        { $addToSet: { reactions: body } },
+        { new: true, runValidators: true }
+    )
+        .then(thoughtData => {
+            if (!thoughtData) {
+                return res.status(404).json({ message: 'No thought found with this id!' });
+            }
+            res.json(thoughtData);
+        })
+        .catch(err => res.json(err));
+},
+
+  // DELETE REACTION
+    getDeleteReaction({ params }, res) {
+    Thought.findOneAndUpdate(
+        { _id: params.thoughtId },
+        { $pull: { reactions: { reactionId: params.reactionId } } },
+        { runValidators: true, new: true }
+    )
+        .then(userData => res.json(userData))
+        .catch(err => res.json(err));
+}
 
 
 
-// End of module.exports
+
+
 }
 
 module.exports = thoughtControllers;
