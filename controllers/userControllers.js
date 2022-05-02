@@ -98,7 +98,31 @@ getCreateUser(req, res) {
         res.status(500).json(err);
       });
   },
+    // ADD FREIND
+  getAddFriend({ params }, res) {
+    User.findOneAndUpdate({ _id: params.id }, { $addToSet: { friends: params.friendId } }, { runValidators: true })
+        .then(userData => {
+            if (!userData) {
+                res.status(404).json({ message: 'No user found with this id!' });
+                return;
+            }
+            res.json(userData);
+        })
+        .catch(err => res.status(400).json(err));
+},
 
+  // REMOVE FRIEND
+    getRemoveFriend({ params }, res) {
+    User.findOneAndUpdate({ _id: params.id }, { $pull: { friends: params.friendId } }, { runValidators: true })
+        .then(userData => {
+            if (!userData) {
+                res.status(404).json({ message: 'No user found with this id!' });
+                return;
+            }
+            res.json(userData);
+        })
+        .catch(err => res.status(400).json(err));
+},
 
 }
 
