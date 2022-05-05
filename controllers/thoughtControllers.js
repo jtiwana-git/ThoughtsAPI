@@ -9,13 +9,14 @@ const thoughtControllers = {
       },
     //   GET SINGLE THOUGHTS
       getSingleThought(req, res) {
-        Thought.findOne({ _id: req.params._id })
+        Thought.findOne({ _id: req.params.id })
         .select()
-              .then((thought) =>
+              .then((thought) => {
                !thought
         ? res.status(404).json({ message: 'No thoughts with that ID' })
         : res.json(thought)
-              )
+            console.log(thought)
+              })
               .catch((err) => res.status(500).json(err));
      },
     //  CREATE THOUGHT
@@ -54,7 +55,7 @@ const thoughtControllers = {
    // ADD REACTION
       getAddReaction({ params, body }, res) {
     Thought.findOneAndUpdate(
-        { _id: params.thoughtId },
+        { _id: params.id },
         { $addToSet: { reactions: body } },
         { new: true, runValidators: true }
     )
