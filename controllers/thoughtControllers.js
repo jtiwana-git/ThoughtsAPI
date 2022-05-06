@@ -1,3 +1,4 @@
+const req = require('express/lib/request');
 const { User, Thought } = require ('../models');
 
 const thoughtControllers = {
@@ -69,16 +70,19 @@ const thoughtControllers = {
 },
 
   // DELETE REACTION
-    getDeleteReaction({ params }, res) {
+    getDeleteReaction({ params, body }, res) {
+    
+      console.log(`Thought ID ${params.id}, Reaction ID ${params.reactionId}`);
       debugger;
-      //THOOUGHT ID & REACTION ID -  6274aef1a04101a61d208bae/reaction/274b04fa04101a61d208bb2
+     
     Thought.findOneAndUpdate(
         { _id: params.id },
-        { $pull: { reaction: { reactionId: params.reactionId } } },
-        { runValidators: true, new: true }
+        { $pull: { reactionId: params.reactionId } },
+        { new: true }
     )
         .then(thoughtData => res.json(thoughtData))
         .catch(err => res.json(err));
+        console.log(`Thought ID ${params.id}, Reaction ID - deleted? ${params.reactionId}`)
 }
 
 
