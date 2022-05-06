@@ -71,7 +71,7 @@ const thoughtControllers = {
   // DELETE REACTION
     getDeleteReaction({ params }, res) {
       debugger;
-      // 6274aef1a04101a61d208bae/reaction/274b04fa04101a61d208bb2
+      //THOOUGHT ID & REACTION ID -  6274aef1a04101a61d208bae/reaction/274b04fa04101a61d208bb2
     Thought.findOneAndUpdate(
         { _id: params.id },
         { $pull: { reaction: { reactionId: params.reactionId } } },
