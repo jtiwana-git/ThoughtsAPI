@@ -12,10 +12,10 @@ const {
 } = require('../../controllers/userControllers')
 
 // /api/users
-router.route('/').get(getUsers, getSingleUser).post(getCreateUser)
+router.route('/').get(getUsers).post(getCreateUser)
 
-// /api/:usersId
-router.route('/:userId').put(getUpdateUser).delete(getDeleteUser)
+// /api/users/:usersId
+router.route('/:userId').put(getUpdateUser).delete(getDeleteUser).get(getSingleUser)
 
 router.route('/:userId').put(getSingleUserAndPopulated)
 

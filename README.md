@@ -43,3 +43,14 @@ WHEN I test API <ins>POST</ins>, <ins>PUT</ins>, and <ins>DELETE</ins> routes in
 THEN I am able to successfully create, update, and delete users and thoughts in my database
 
 WHEN I test API <ins>POST</ins> and <ins>DELETE</ins> routes in <ins>**Insomnia**</ins>. Then I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
+
+
+## Deployed Link
+* [See video Walkthrough](https:input link here )
+
+<br>
+## Author
+
+ ***Jagdeep Tiwana***
+
+- [Link to Github](https://github.com/jtiwana-git/ThoughtsAPI)

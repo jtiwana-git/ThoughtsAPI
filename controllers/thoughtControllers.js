@@ -70,12 +70,14 @@ const thoughtControllers = {
 
   // DELETE REACTION
     getDeleteReaction({ params }, res) {
+      debugger;
+      // 6274aef1a04101a61d208bae/reaction/274b04fa04101a61d208bb2
     Thought.findOneAndUpdate(
-        { _id: params.thoughtId },
-        { $pull: { reactions: { reactionId: params.reactionId } } },
+        { _id: params.id },
+        { $pull: { reaction: { reactionId: params.reactionId } } },
         { runValidators: true, new: true }
     )
-        .then(userData => res.json(userData))
+        .then(thoughtData => res.json(thoughtData))
         .catch(err => res.json(err));
 }
 
