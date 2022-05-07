@@ -46,7 +46,8 @@ WHEN I test API <ins>POST</ins> and <ins>DELETE</ins> routes in <ins>**Insomnia*
 
 
 ## Deployed Link
-* [See video Walkthrough](https:input link here )
+* [See video Walkthrough - PART ONE](https://youtu.be/uqW6gk0ji7Q)
+* [See video Walkthrough - PART TWO](https://youtu.be/289gTFJDo08)
 
 <br>
 ## Author
